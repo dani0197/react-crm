@@ -2,16 +2,35 @@ body {
   background-color: #ecf0f1;
 }
 
-.navBar {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: #0a1612;
-  text-align: left;
-  height: 55px;
 }
 
-.Link {
+li {
+  float: left;
+}
+
+li a {
+  display: block;
   color: white;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  margin: 2vh;
 }
 
+li a:hover {
+  background-color: grey;
+}
+
+input {
+  /* border-radius: 5px; */
+}
+
+select {
+  /* border-radius: 5px; */
+}

@@ -1,0 +1,28 @@
+.add-client {
+    margin: 3em;
+}
+
+#actions-input1 {
+    margin-left: 24px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}
+#actions-input2 {
+    margin-left: 36px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}
+#actions-input3 {
+    margin-left: 45px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}
+#actions-input4 {
+    margin-left: 55px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid;
+}

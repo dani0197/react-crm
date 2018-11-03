@@ -1,0 +1,8 @@
+td, th {
+    border: 1px solid
+}
+
+.popup-button {
+    float: left;
+    border-radius: 5px; 
+}
