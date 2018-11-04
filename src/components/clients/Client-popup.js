@@ -10,20 +10,10 @@ class ClientPopup extends Component {
         }
     }
 
-    nameInput = (e)=> {
-        let inputValue = e.target.value
-        this.setState({name: inputValue})
-        console.log(this.state.name)
-    }
-
-    sureNameInput = (e)=> {
-        let inputValue = e.target.value
-        this.setState({sureName: inputValue})
-    }
-
-    countryInput = (e)=> {
-        let inputValue = e.target.value
-        this.setState({country: inputValue})
+    inputChange = (e)=> {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     updateClient = ()=> {
@@ -42,9 +32,9 @@ class ClientPopup extends Component {
                 <div className="popup-inner">
                     <button className="close-button" type="button" onClick={this.props.togglePopup}>X</button>
                     <h3>edit info </h3>
-                   <p> Name: <input type="text" value={this.state.name} onChange={this.nameInput}/></p>
-                    <p>Surname: <input type="text" value={this.state.sureName} onChange={this.sureNameInput} /></p>
-                    <p>Country: <input type="text" value={this.state.country} onChange={this.countryInput} /></p>
+                   <p> Name: <input type="text" name="name" value={this.state.name} onChange={this.inputChange}/></p>
+                    <p>Surname: <input type="text" name="surName" value={this.state.sureName} onChange={this.inputChange} /></p>
+                    <p>Country: <input type="text" name="country" value={this.state.country} onChange={this.inputChange} /></p>
                     <button className="popup-update" type="button" onClick={this.updateClient}>Update</button>
                 </div>
             </div>

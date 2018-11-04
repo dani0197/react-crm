@@ -1,6 +1,14 @@
 .add-client {
     margin: 3em;
 }
+#add-client-button {
+    background-color: #f7ce3e;
+    margin: 2em;
+    border: none;
+    padding: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
 
 #actions-input1 {
     margin-left: 24px;

@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import '../../styles/actions/Update.css';
 
 class Update extends Component {
+    constructor() {
+        super()
+        this.state = {
+            clientName: ""
+        }
+    }
+
+    nameInput = (e)=> {
+        let inputValue = e.target.value
+        this.setState({clientName: inputValue})
+    }
 
     render() {
         return (
@@ -9,7 +20,7 @@ class Update extends Component {
                 <h4>UPDATE</h4>
                 <div>
                     <span className="client-span">
-                    Client: <input type="text" className="actions-input" placeholder="Client Name" />
+                    Client: <input type="text" onChange={this.nameInput} className="actions-input" placeholder="Client Name" />
                     </span>
                 </div>
                 <div>
