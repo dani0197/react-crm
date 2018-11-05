@@ -8,6 +8,7 @@
     padding: 1em;
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 #actions-input1 {

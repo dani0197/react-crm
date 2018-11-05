@@ -1,29 +1,35 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import Client from './Client';
 import ClientsHeader from './Clients-header';
+import Loader from '../clients/Loader';
 import '../../styles/clients/Clients.css';
 import '../../styles/clients/ClientsHeader.css';
+import '../../styles/clients/Loader.css';
 
 class Clients extends Component {
     constructor() {
         super()
         this.state = {
-            clients: []
+            clients: [],
+            loader: true
         }
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            let data = require('../../data.json')
-                this.setState({ clients: data })
-        }, 100)
+        axios.get('http://localhost:3030/clients').then((response) => {
+            this.setState({
+                clients: response.data,
+                loader: false
+            })
+        })
     }
 
-    updateClient=(id, name, surName, country) =>{
-        let updatedClients = this.state.clients.map(client=> {
-            if(client._id === id){
-               let newClient = {...client};
-               newClient.name = name + " " + surName;
+    updateClient = (id, name, surName, country) => {
+        let updatedClients = this.state.clients.map(client => {
+            if (client._id === id) {
+                let newClient = { ...client };
+                newClient.name = name + " " + surName;
                 newClient.country = country;
                 return newClient;
             }
@@ -34,7 +40,7 @@ class Clients extends Component {
             clients: updatedClients
         })
 
-         
+
     }
 
     render() {
@@ -51,12 +57,13 @@ class Clients extends Component {
                 <table>
                     <tbody>
                         <ClientsHeader />
+                        {this.state.loader ? <Loader /> : null}
                         {this.state.clients.map(client =>
-                        <Client
-                            client={client}
-                            key={client._id}
-                            updateClient={this.updateClient} 
-                        />)}
+                            <Client
+                                client={client}
+                                key={client._id}
+                                updateClient={this.updateClient}
+                            />)}
                     </tbody>
                 </table>
             </div>

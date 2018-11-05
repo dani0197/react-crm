@@ -5,7 +5,7 @@ class ClientPopup extends Component {
         super(props)
         this.state = {
             name: props.client.name.split(" ")[0],
-            sureName: props.client.name.split(" ")[1],
+            surName: props.client.name.split(" ")[1],
             country: props.client.country
         }
     }
@@ -18,7 +18,7 @@ class ClientPopup extends Component {
 
     updateClient = ()=> {
         let name = this.state.name
-        let surName = this.state.sureName
+        let surName = this.state.surName
         let country = this.state.country
         let id = this.props.client._id
         this.props.updateClient(id, name, surName, country)
@@ -33,7 +33,7 @@ class ClientPopup extends Component {
                     <button className="close-button" type="button" onClick={this.props.togglePopup}>X</button>
                     <h3>edit info </h3>
                    <p> Name: <input type="text" name="name" value={this.state.name} onChange={this.inputChange}/></p>
-                    <p>Surname: <input type="text" name="surName" value={this.state.sureName} onChange={this.inputChange} /></p>
+                    <p>Surname: <input type="text" name="surName" value={this.state.surName} onChange={this.inputChange} /></p>
                     <p>Country: <input type="text" name="country" value={this.state.country} onChange={this.inputChange} /></p>
                     <button className="popup-update" type="button" onClick={this.updateClient}>Update</button>
                 </div>
