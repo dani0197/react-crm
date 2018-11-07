@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/clientsDB', ()=> {
 // });
 
 const clientsApi = require('./routes/clientsApi')
+const actionsApi = require('./routes/actionsApi')
 
 const app = express()
 app.use(express.static('public'));
@@ -32,6 +33,8 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', clientsApi)
+app.use('/', actionsApi)
+
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Server running on port ${SERVER_PORT}`);

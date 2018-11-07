@@ -10,10 +10,6 @@ class Client extends Component {
         }
     }
 
-    togglePopup = ()=> {
-        this.setState({showPopup: !this.state.showPopup})
-    }
-
     mailtype = ()=> {
         const emailType = this.props.client.emailType
         return (emailType ? emailType : "-")

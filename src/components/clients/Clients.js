@@ -26,21 +26,23 @@ class Clients extends Component {
     }
 
     updateClient = (id, name, surName, country) => {
+        let myClient;
         let updatedClients = this.state.clients.map(client => {
             if (client._id === id) {
                 let newClient = { ...client };
                 newClient.name = name + " " + surName;
                 newClient.country = country;
+                myClient = newClient
+                console.log(myClient)
                 return newClient;
             }
             return client;
         })
-
-        this.setState({
-            clients: updatedClients
+        axios.post('http://localhost:3030/clients', myClient).then(()=> {
+            this.setState({
+                clients: updatedClients
+            })
         })
-
-
     }
 
     render() {
@@ -57,15 +59,15 @@ class Clients extends Component {
                 <table>
                     <tbody>
                         <ClientsHeader />
-                        {this.state.loader ? <Loader /> : null}
                         {this.state.clients.map(client =>
                             <Client
-                                client={client}
-                                key={client._id}
-                                updateClient={this.updateClient}
+                            client={client}
+                            key={client._id}
+                            updateClient={this.updateClient}
                             />)}
                     </tbody>
                 </table>
+                            {this.state.loader ? <Loader /> : null}
             </div>
         )
     }
