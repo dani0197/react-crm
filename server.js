@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const Client = require('./models/clientModel')
+
 
 const SERVER_PORT = 3030;
 
@@ -19,8 +19,7 @@ const clientsApi = require('./routes/clientsApi')
 const actionsApi = require('./routes/actionsApi')
 
 const app = express()
-app.use(express.static('public'));
-app.use(express.static('node_modules'));
+app.use(express.static('build'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
