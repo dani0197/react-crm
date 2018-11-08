@@ -17,7 +17,7 @@ class Clients extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3030/clients').then((response) => {
+        axios.get('/clients').then((response) => {
             this.setState({
                 clients: response.data,
                 loader: false
@@ -38,7 +38,7 @@ class Clients extends Component {
             }
             return client;
         })
-        axios.post('http://localhost:3030/clients', myClient).then(()=> {
+        axios.post('/clients', myClient).then(()=> {
             this.setState({
                 clients: updatedClients
             })
