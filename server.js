@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const SERVER_PORT = 3030;
 
-mongoose.connect('mongodb://localhost/clientsDB', ()=> {
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/clientsDB', ()=> {
     console.log("DB connected");
 })
 
@@ -36,6 +36,6 @@ app.use('/', clientsApi)
 app.use('/', actionsApi)
 
 
-app.listen(SERVER_PORT, ()=> {
+app.listen(process.env.PORT || SERVER_PORT, ()=> {
     console.log(`Server running on port ${SERVER_PORT}`);
 });
