@@ -1,19 +1,19 @@
+// const Client = require ('./models/clientModel')
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
 const SERVER_PORT = 3030;
-
-mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/clientsDB', ()=> {
-    console.log("DB connected");
-})
 
 // const data = require('./src/data.json')
 // data.forEach(client => {
 //    let c = new Client(client)
 //    c.save()
 // });
+
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/clientsDB', ()=> {
+    console.log("DB connected");
+})
 
 const clientsApi = require('./routes/clientsApi')
 const actionsApi = require('./routes/actionsApi')
