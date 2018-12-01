@@ -5,21 +5,37 @@ class Update extends Component {
     constructor() {
         super()
         this.state = {
-            clientName:"",
-            ownerName:""
+            clientName: "",
+            ownerName: "",
+            emailType: ""
         }
     }
 
-    inputChange = (e)=> {
+    inputChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    changeOwner = ()=> {
+    transferOwner = () => {
         let clientName = this.state.clientName
         let ownerName = this.state.ownerName
-        this.props.changeOwner(clientName, ownerName)
+        this.props.transferOwner(clientName, ownerName)
+    }
+
+    sendEmail = () => {
+        let clientName = this.state.clientName
+        let emailType = this.state.emailType
+        this.props.sendEmail(clientName, emailType)
+    }
+
+    declareSale = () => {
+        let clientName = this.state.clientName
+        if (this.props.clients.sold === true) {
+            alert ("Already sold")
+        } else {
+            this.props.declareSale(clientName)
+        }
     }
 
     render() {
@@ -30,13 +46,13 @@ class Update extends Component {
                 <h4>UPDATE</h4>
                 <div>
                     <span className="client-span">
-                    Client: <input list="clients" value={this.state.clientName} name="clientName" placeholder="Client Name" onChange={this.inputChange} className="actions-input" />
-                    <datalist id="clients"> 
-                        {clients.map(client => {
-                            return <option key={client.id} value={client.name} />                        
+                        Client: <input list="clients" value={this.state.clientName} name="clientName" placeholder="Client Name" onChange={this.inputChange} className="actions-input" />
+                        <datalist id="clients">
+                            {clients.map(client => {
+                                return <option key={client._id} value={client.name} />
                             }
-                        )}
-                    </datalist>
+                            )}
+                        </datalist>
                     </span>
                 </div>
                 <div>
@@ -51,22 +67,22 @@ class Update extends Component {
                         <option value="Shepherd Stone">Shepherd Stone</option>
                         <option value="Barton Ramirez">Barton Ramirez</option>
                     </select>
-                    <input type="button" id="actions-button1" value="TRANSFER" />
+                    <input type="button" id="actions-button1" onClick={this.transferOwner} value="TRANSFER" />
                 </div>
                 <div>
                     Send email:
-                <select id="actions-select2">
+                <select id="actions-select2" name="emailType" onChange={this.inputChange} >
                         <option>Email Type</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
                         <option value="D">D</option>
                     </select>
-                    <input type="button" id="actions-button2" value="SEND" />
+                    <input type="button" id="actions-button2" onClick={this.sendEmail} value="SEND" />
                 </div>
                 <div>
                     Declare sale!
-                <input type="button" id="actions-button3" value="DECLARE" />
+                <input type="button" id="actions-button3" onClick={this.declareSale} value="DECLARE" />
                 </div>
             </div>
         )
